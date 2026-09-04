@@ -22,7 +22,7 @@ and the Shorts player itself.
 
 ## Settings
 
-<img src="docs/popup.png" alt="Extension popup with four toggles and a redirect mode" width="306" align="right">
+<img src="docs/popup.png" alt="Extension popup with four toggles and a redirect mode" width="306" align="center">
 
 | Setting | Removes |
 | --- | --- |
