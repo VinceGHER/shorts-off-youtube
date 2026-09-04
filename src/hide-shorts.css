@@ -1,0 +1,78 @@
+/*
+ * Shorts Off for YouTube — hiding rules.
+ *
+ * Every group is gated on an attribute that content.js puts on <html>:
+ *   <html data-so-sidebar="off">  -> that group is disabled
+ * The absence of the attribute means "hide", so the rules are already active
+ * at document_start, before the settings have been read from storage. That is
+ * what keeps Shorts from flashing on screen during page load.
+ */
+
+/*
+ * Set by content.js on elements it has to identify in JS, tagged with the
+ * group they belong to so the toggles still gate them.
+ */
+html:not([data-so-sidebar="off"]) [data-so-hidden="sidebar"],
+html:not([data-so-channel-tab="off"]) [data-so-hidden="tab"] {
+  display: none !important;
+}
+
+/* The Shorts player is blanked while we decide whether to redirect away. */
+html[data-so-shorts-pending] body {
+  visibility: hidden !important;
+}
+
+/* ------------------------------------------------------------------ *
+ * 1. Navigation: sidebar, mini sidebar, mobile pivot bar
+ *
+ * The current sidebar entry carries no href at all, so the reliable match
+ * lives in content.js; these rules cover the older and mobile markup.
+ * ------------------------------------------------------------------ */
+html:not([data-so-sidebar="off"]) ytd-guide-entry-renderer:has(a[href="/shorts"]),
+html:not([data-so-sidebar="off"]) ytd-mini-guide-entry-renderer:has(a[href="/shorts"]),
+html:not([data-so-sidebar="off"]) ytd-guide-entry-renderer:has(a[title="Shorts"]),
+html:not([data-so-sidebar="off"]) ytd-mini-guide-entry-renderer:has(a[title="Shorts"]),
+html:not([data-so-sidebar="off"]) ytm-pivot-bar-item-renderer:has(.pivot-shorts) {
+  display: none !important;
+}
+
+/* ------------------------------------------------------------------ *
+ * 2. Shelves: the Shorts rows on home, subscriptions, search, channels
+ * ------------------------------------------------------------------ */
+html:not([data-so-shelves="off"]) ytd-rich-shelf-renderer[is-shorts],
+html:not([data-so-shelves="off"]) ytd-reel-shelf-renderer,
+html:not([data-so-shelves="off"]) ytm-reel-shelf-renderer,
+html:not([data-so-shelves="off"]) grid-shelf-view-model,
+html:not([data-so-shelves="off"]) ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]),
+html:not([data-so-shelves="off"]) ytd-rich-section-renderer:has(grid-shelf-view-model),
+html:not([data-so-shelves="off"]) ytd-rich-section-renderer:has(ytm-shorts-lockup-view-model),
+html:not([data-so-shelves="off"]) ytd-item-section-renderer:has(> #contents > ytd-reel-shelf-renderer),
+html:not([data-so-shelves="off"]) ytd-item-section-renderer:has(> #contents > grid-shelf-view-model) {
+  display: none !important;
+}
+
+/* ------------------------------------------------------------------ *
+ * 3. Individual Shorts thumbnails wherever they appear
+ *    (home grid, search results, watch-next sidebar, channel grids)
+ * ------------------------------------------------------------------ */
+html:not([data-so-items="off"]) ytm-shorts-lockup-view-model,
+html:not([data-so-items="off"]) ytm-shorts-lockup-view-model-v2,
+html:not([data-so-items="off"]) ytd-rich-item-renderer:has(a[href^="/shorts/"]),
+html:not([data-so-items="off"]) ytd-video-renderer:has(a[href^="/shorts/"]),
+html:not([data-so-items="off"]) ytd-grid-video-renderer:has(a[href^="/shorts/"]),
+html:not([data-so-items="off"]) ytd-compact-video-renderer:has(a[href^="/shorts/"]),
+html:not([data-so-items="off"]) yt-lockup-view-model:has(a[href^="/shorts/"]),
+html:not([data-so-items="off"]) ytd-rich-item-renderer:has(a[href*="youtube.com/shorts/"]),
+html:not([data-so-items="off"]) yt-lockup-view-model:has(a[href*="youtube.com/shorts/"]) {
+  display: none !important;
+}
+
+/* ------------------------------------------------------------------ *
+ * 4. The Shorts tab on channel pages
+ *    Newer markup carries no href, so content.js tags those in JS.
+ * ------------------------------------------------------------------ */
+html:not([data-so-channel-tab="off"]) tp-yt-paper-tab:has(a[href$="/shorts"]),
+html:not([data-so-channel-tab="off"]) yt-tab-shape:has(a[href$="/shorts"]),
+html:not([data-so-channel-tab="off"]) ytd-guide-entry-renderer:has(a[href$="/shorts"]) {
+  display: none !important;
+}

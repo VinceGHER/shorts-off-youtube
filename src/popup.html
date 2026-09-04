@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="popup.css" />
+    <title>Shorts Off</title>
+  </head>
+  <body>
+    <header class="head">
+      <h1>Shorts off</h1>
+      <p class="head__sub">Pick what disappears from YouTube.</p>
+    </header>
+
+    <ul class="switches">
+      <li class="switch">
+        <div class="switch__text">
+          <span class="switch__name" id="label-hideSidebar">Navigation</span>
+          <span class="switch__note">The sidebar entry and the Shorts filter in search.</span>
+        </div>
+        <button
+          type="button"
+          role="switch"
+          class="toggle"
+          data-setting="hideSidebar"
+          aria-checked="true"
+          aria-labelledby="label-hideSidebar"
+        ></button>
+      </li>
+
+      <li class="switch">
+        <div class="switch__text">
+          <span class="switch__name" id="label-hideShelves">Shorts rows</span>
+          <span class="switch__note">Whole shelves on home, subscriptions and search.</span>
+        </div>
+        <button
+          type="button"
+          role="switch"
+          class="toggle"
+          data-setting="hideShelves"
+          aria-checked="true"
+          aria-labelledby="label-hideShelves"
+        ></button>
+      </li>
+
+      <li class="switch">
+        <div class="switch__text">
+          <span class="switch__name" id="label-hideItems">Loose thumbnails</span>
+          <span class="switch__note">Single Shorts mixed into feeds and the watch sidebar.</span>
+        </div>
+        <button
+          type="button"
+          role="switch"
+          class="toggle"
+          data-setting="hideItems"
+          aria-checked="true"
+          aria-labelledby="label-hideItems"
+        ></button>
+      </li>
+
+      <li class="switch">
+        <div class="switch__text">
+          <span class="switch__name" id="label-hideChannelTab">Channel tab</span>
+          <span class="switch__note">The Shorts tab on a channel page.</span>
+        </div>
+        <button
+          type="button"
+          role="switch"
+          class="toggle"
+          data-setting="hideChannelTab"
+          aria-checked="true"
+          aria-labelledby="label-hideChannelTab"
+        ></button>
+      </li>
+    </ul>
+
+    <fieldset class="modes">
+      <legend>When a Short opens anyway</legend>
+      <label class="mode">
+        <input type="radio" name="shortsPage" value="redirect" checked />
+        <span class="mode__name">Play it as a normal video</span>
+      </label>
+      <label class="mode">
+        <input type="radio" name="shortsPage" value="home" />
+        <span class="mode__name">Send me to the homepage</span>
+      </label>
+      <label class="mode">
+        <input type="radio" name="shortsPage" value="allow" />
+        <span class="mode__name">Let it play</span>
+      </label>
+    </fieldset>
+
+    <p class="foot">Open YouTube tabs update as you change these.</p>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

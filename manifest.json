@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "Shorts Off for YouTube",
+  "version": "1.0.0",
+  "description": "Removes YouTube Shorts: the sidebar entry, the shelves, the thumbnails, the channel tab, and the Shorts player itself.",
+  "permissions": ["storage"],
+  "host_permissions": ["*://*.youtube.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "css": ["src/hide-shorts.css"],
+      "js": ["src/content.js"],
+      "run_at": "document_start",
+      "all_frames": false
+    }
+  ],
+  "action": {
+    "default_title": "Shorts Off",
+    "default_popup": "src/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

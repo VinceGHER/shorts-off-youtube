@@ -1,0 +1,158 @@
+:root {
+  --paper: #ffffff;
+  --ink: #16130f;
+  --muted: #6d6862;
+  --rule: #e4e0da;
+  --track: #d3cec7;
+  --live: #c4302b;
+  --focus: #16130f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #17161a;
+    --ink: #f1eeea;
+    --muted: #9a948d;
+    --rule: #2c2a30;
+    --track: #3a373f;
+    --live: #e8564f;
+    --focus: #f1eeea;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 306px;
+  margin: 0;
+  padding: 18px 18px 14px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: ui-sans-serif, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.head h1 {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.head__sub {
+  margin: 2px 0 16px;
+  color: var(--muted);
+}
+
+.switches {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--rule);
+}
+
+.switch {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.switch__text {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.switch__name {
+  font-weight: 550;
+}
+
+.switch__note {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* A blunt rectangular switch, closer to a hardware toggle than a pill. */
+.toggle {
+  flex: none;
+  width: 34px;
+  height: 20px;
+  margin-top: 1px;
+  padding: 2px;
+  border: 0;
+  border-radius: 3px;
+  background: var(--track);
+  cursor: pointer;
+  transition: background 120ms ease;
+}
+
+.toggle::after {
+  content: "";
+  display: block;
+  width: 14px;
+  height: 16px;
+  border-radius: 2px;
+  background: var(--paper);
+  transform: translateX(0);
+  transition: transform 120ms ease;
+}
+
+.toggle[aria-checked="true"] {
+  background: var(--live);
+}
+
+.toggle[aria-checked="true"]::after {
+  transform: translateX(16px);
+}
+
+.toggle:focus-visible,
+.mode input:focus-visible + .mode__name {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.modes {
+  margin: 16px 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.modes legend {
+  padding: 0;
+  margin-bottom: 7px;
+  color: var(--muted);
+}
+
+.mode {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 4px 0;
+  cursor: pointer;
+}
+
+.mode input {
+  accent-color: var(--live);
+  margin: 0;
+}
+
+.foot {
+  margin: 16px 0 0;
+  padding-top: 11px;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toggle,
+  .toggle::after {
+    transition: none;
+  }
+}
