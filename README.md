@@ -2,7 +2,9 @@
 
 A Manifest V3 Chrome extension that takes Shorts out of YouTube: the sidebar
 entry, the search filter, the shelves, the loose thumbnails, the channel tab,
-and the Shorts player itself.
+and the Shorts player itself. 
+
+If you like it please star it.
 
 | Before | After |
 | --- | --- |
